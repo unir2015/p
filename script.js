@@ -35,8 +35,16 @@ async function loadMorePhotos() {
 
       const img = document.createElement("img");
       img.classList.add("content-img");
+
+
       const nameAuthor = document.createElement("p");
       nameAuthor.classList.add("content-author");
+
+      const grop = document.createElement('div');
+      grop.classList.add("grop");
+
+      const gropLeft = document.createElement('div');
+      gropLeft.classList.add("gropLeft");
 
       const userLike = document.createElement("p");
       userLike.classList.add("user-like");
@@ -52,9 +60,11 @@ async function loadMorePhotos() {
       btn.textContent = "лайк";
 
       photoElement.appendChild(img);
-      photoElement.appendChild(nameAuthor);
-      photoElement.appendChild(userLike);
-      photoElement.appendChild(btn);
+      grop.appendChild(nameAuthor)
+      gropLeft.appendChild(userLike);
+      gropLeft.appendChild(btn);
+      grop.appendChild(gropLeft);
+      photoElement.appendChild(grop);
       content.appendChild(photoElement);
     });
   } else {

@@ -3,15 +3,16 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css">
 		<script src="./script.js" blocking></script>
-		<title>Document</title>
+		<title>photos</title>
 	</head>
 	<body>
 		<div id="content">
 			<!-- <button id="like-btn">лайк</button> -->
 		</div>
-		<button id="loadSave"></button>
-		<div id="content-save"></div>
+		<button id="loadSave">История like</button>
+		<div id="save"></div>
 
 		<script>
 			window.addEventListener("click", function (event) {
@@ -36,7 +37,6 @@
 							},
 						];
 						localStorage.setItem("CardLikeSet", JSON.stringify(CardLikeSet));
-
 					} else {
 						for (const count in newCardLikeSet) {
 							++counter;
@@ -65,9 +65,77 @@
 						localStorage.setItem("CardLikeSet", JSON.stringify(newCardLikeSet));
 					}
 				}
-				else if (event.target.hasAttribute("data-card")) {
+			});
 
-				}
+			loadSave.addEventListener("click", function (e) {
+				let localEl = JSON.parse(localStorage.getItem("CardLikeSet"));
+				localEl.forEach((photo) => {
+					const photoElement = document.createElement("div");
+      photoElement.setAttribute("data-id", `${updateId()}`);
+      photoElement.classList.add("photo");
+
+      const img = document.createElement("img");
+      img.classList.add("content-img");
+
+
+      const nameAuthor = document.createElement("p");
+      nameAuthor.classList.add("content-author");
+
+      const grop = document.createElement('div');
+      grop.classList.add("grop");
+
+      const gropLeft = document.createElement('div');
+      gropLeft.classList.add("gropLeft");
+
+      const userLike = document.createElement("p");
+      userLike.classList.add("user-like");
+
+      const btn = document.createElement("button");
+      btn.setAttribute("data-card", "button");
+      btn.classList.add("like-btn");
+
+      img.src = photo.imgSrc;
+			img.alt = photo.imgAlt;
+			nameAuthor.textContent = photo.authorName;
+			userLike.textContent = photo.userLike;
+			btn.textContent = "лайк";
+
+      photoElement.appendChild(img);
+      grop.appendChild(nameAuthor)
+      gropLeft.appendChild(userLike);
+      gropLeft.appendChild(btn);
+      grop.appendChild(gropLeft);
+      photoElement.appendChild(grop);
+      save.appendChild(photoElement);
+					// const photoElement = document.createElement("div");
+					// photoElement.setAttribute("data-id", `${photo.id}`);
+					// photoElement.classList.add("photo");
+
+					// const img = document.createElement("img");
+					// img.classList.add("content-img");
+
+					// const nameAuthor = document.createElement("p");
+					// nameAuthor.classList.add("content-author");
+
+					// const userLike = document.createElement("p");
+					// userLike.classList.add("user-like");
+
+					// const btn = document.createElement("button");
+					// btn.setAttribute("data-card", "button");
+					// btn.classList.add("like-btn");
+
+					// img.src = photo.imgSrc;
+					// img.alt = photo.imgAlt;
+					// nameAuthor.textContent = photo.authorName;
+					// userLike.textContent = photo.userLike;
+					// btn.textContent = "лайк";
+
+					// photoElement.appendChild(img);
+					// photoElement.appendChild(nameAuthor);
+					// photoElement.appendChild(userLike);
+					// photoElement.appendChild(btn);
+					// save.appendChild(photoElement);
+				});
 			});
 		</script>
 	</body>

@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+body {
+	padding-left: calc(50% - 570px);
+	padding-right: calc(50% - 570px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	flex-direction: row;
+}
+.content-img {
+	box-shadow: 0px 17px 22px 0px rgba(0, 0, 0, 0.7);
+	flex: 1 1 calc(33.33% - 20px);
+	margin: 10px;
+	border: 1px solid red;
+	overflow: hidden;
+}
+.grop {
+  display: flex
+;
+    justify-content: space-between;
+}
+.gropLeft {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	align-items: center;
+	margin-right: 20px;
+}
+.like-btn {
+	border-radius: 11px;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid red;
+	color: #f16d7f;
+	background-color: #fff;
+	box-shadow: 0 4px 6px rgba(65, 132, 144, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+	cursor: pointer;
+	transition: box-shadow 0.2s;
+}
+
+.like-btn:hover {
+	transition: all 0.2s;
+	box-shadow: 0 7px 14px rgba(65, 132, 144, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+	background-color: #f16d7f;
+	color: #fff;
+}
+.user-like{
+  border-radius: 11px;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: inline-block;
+  color: #F16D7F;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(65, 132, 144, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+#loadSave {
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 15px 39px;
+	display: inline-block;
+	margin: 48px auto;
+	outline: none;
+	border: 1px solid red;
+	color: #f16d7f;
+	background-color: #fff;
+	box-shadow: 0 4px 6px rgba(65, 132, 144, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+	cursor: pointer;
+	transition: box-shadow 0.2s;
+}
+#loadSave:hover {
+	transition: all 0.2s;
+	box-shadow: 0 7px 14px rgba(65, 132, 144, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+	background-color: #f16d7f;
+	color: #fff;
+}
+#save {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	flex-direction: row;
+}
