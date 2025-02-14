@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="./script.js" blocking></script>
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="content">
+			<!-- <button id="like-btn">лайк</button> -->
+		</div>
+		<button id="loadSave"></button>
+		<div id="content-save"></div>
+
+		<script>
+			window.addEventListener("click", function (event) {
+				if (event.target.hasAttribute("data-card")) {
+					let gettingValue = localStorage.getItem("CardLikeSet");
+					const card = event.target.closest(".photo");
+					let newCardLikeSet = JSON.parse(gettingValue);
+					const cardId = card.dataset.id;
+
+					let counter = 0;
+
+					if (gettingValue === null) {
+						console.log("Создание localStorage");
+
+						const CardLikeSet = [
+							{
+								id: cardId,
+								imgSrc: card.querySelector(".content-img").src,
+								imgAlt: card.querySelector(".content-img").alt,
+								authorName: card.querySelector(".content-author").textContent,
+								userLike: card.querySelector(".user-like").textContent,
+							},
+						];
+						localStorage.setItem("CardLikeSet", JSON.stringify(CardLikeSet));
+
+					} else {
+						for (const count in newCardLikeSet) {
+							++counter;
+							const lenLikeSet = newCardLikeSet.length;
+							let index = newCardLikeSet[count].id;
+
+							if (index === cardId) {
+								console.log("Обновление localStorage + like");
+
+								let likeUser = newCardLikeSet[count].userLike;
+								++likeUser;
+								card.querySelector(".user-like").textContent = likeUser;
+								newCardLikeSet[count].userLike = likeUser;
+							} else if (counter === lenLikeSet && index < cardId) {
+								console.log("Добавление localStorage");
+								const temp = {
+									id: cardId,
+									imgSrc: card.querySelector(".content-img").src,
+									imgAlt: card.querySelector(".content-img").alt,
+									authorName: card.querySelector(".content-author").textContent,
+									userLike: 1,
+								};
+								newCardLikeSet.push(temp);
+							}
+						}
+						localStorage.setItem("CardLikeSet", JSON.stringify(newCardLikeSet));
+					}
+				}
+				else if (event.target.hasAttribute("data-card")) {
+
+				}
+			});
+		</script>
+	</body>
+</html>
